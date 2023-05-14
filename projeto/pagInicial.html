@@ -6,7 +6,22 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <style>
             body {
-                font-family: 'Times New Roman', Times, serif;
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 90vh;
+                width: 180vh;
+                margin-left: 2cm;
+                margin-right: 2cm;
+                margin-top: 1cm;
+            }
+            .container {
+                background-color: #fff;
+                border-radius: 5px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                padding-bottom: 0.5cm;
             }
             h1 {
                 position: relative;
@@ -42,22 +57,25 @@
                 font-size: 50px;
                 color: white;
                 background-color: grey;
+                cursor: pointer;
             }
         </style>
     </head>
 	<body>
-        <img src="img/logo.png" alt="logo">
-        <h1>CRNY (Car Next To You)</h1>
-        <h4>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            A Car Next To You é um aplicativo de aluguel de carros,
-            onde através do aplicativo você poderá escolher qualquer 
-            carro próximo a você. Aqui,  todos são fornecidos pela 
-            CNTY em parceria com as concessionárias e você poderá ver 
-            uma lista de carros próximos a você indicando preço, distância
-            de você, modelo, cor, quilometragem, quantidade de combustível
-            e avaliação de outros usuários do carro.</h4>
-        <div style="text-align: center;">
-            <a href='#' type='submit'><button>INICIAR</button></a>
+        <div class="container">
+            <img src="img/logo.png" alt="logo">
+            <h1>CRNY (Car Next To You)</h1>
+            <h4>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                A Car Next To You é um aplicativo de aluguel de carros,
+                onde através do aplicativo você poderá escolher qualquer 
+                carro próximo a você. Aqui,  todos são fornecidos pela 
+                CNTY em parceria com as concessionárias e você poderá ver 
+                uma lista de carros próximos a você indicando preço, distância
+                de você, modelo, cor, quilometragem, quantidade de combustível
+                e avaliação de outros usuários do carro.</h4>
+            <div style="text-align: center;">
+                <a href='loginPag.html' type='submit'><button>INICIAR</button></a>
+            </div>
         </div>
   	</body>  
 </html>
