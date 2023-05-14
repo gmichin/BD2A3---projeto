@@ -1,158 +1,63 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>site teste</title>
+		<title>pág. incial</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-		<style>
-			#panel{
-				display: none;
-			}
-			#panel a:hover {
-				background-color: #3e8e41;
-			}
-
-			#flip a:hover {
-				background-color: #f2f2f2;
-			}
-			#flip {
-				position: fixed;
-				top: 0.1cm;
-				left: 0;
-				width: 17.3%;
-				background-color: black;
-				padding: 20px;
-				overflow-x: hidden;
-				padding-top: 20px;
-				color: white;
-				font-size: 26px;
-			}
-			#flip:hover {
-				background-color: green;
-			}
-			.sidebar {
-				position: fixed;
-				top: 2cm;
-				left: 0;
-				bottom: 0.1cm;
-				padding-left: 0.5cm;
-				width: 18.75%;
-				background-color: #1a1a1a;
-				overflow-x: hidden;
-				padding-top: 20px;
-				padding-bottom: 29%;
-			}
-
-			.sidebar a {
-				display: block;
-				color: #f2f2f2;
-				padding: 16px;
-				text-decoration: none;
-				font-size: 20px;
-				transition: 0.3s;
-			}
-
-			.sidebar a:hover {
-				background-color: #ddd;
-				color: black;
-			}
-
-			.sidebar .active {
-				background-color: #4CAF50;
-				color: white;
-			}
-
-			.main {
-				float:right;
-				width: 75%;
-			}
-
-			body {
-				margin: 0;
-				padding: 0;
-				background-color: #1c1c1c;
-				color: #fff;
-				font-family: sans-serif;
-			}
-
-			h1 {
-				font-weight: bold;
-				font-size: 40px;
-				margin-top: 50px;
-				margin-bottom: 20px;
-				text-align: center;
-			}
-
-			p {
-				font-size: 20px;
-				line-height: 1.5;
-				margin-bottom: 20px;
-			}
-
-			@media screen and (max-height: 450px) {
-				.sidebar {padding-top: 15px;}
-				.sidebar a {font-size: 18px;}
-			}
-
-			button {
-				background-color: #008000;
-				color: #fff;
-				border: none;
-				padding: 8px 16px;
-				cursor: pointer;
-			}
-
-			input[type="text"] {
-				padding: 8px;
-				border: none;
-				border-radius: 8px;
-				width: 200px;
-				background-color: #fff;
-				color: #1c1c1c;
-				margin-right: 10px;
-			}
-
-			input[type="text"]:focus {
-				outline: none;
-				box-shadow: 0 0 2px #008000;
-			}
-
-			form {
-				display: flex;
-				align-items: center;
-				float: right;
-			}
-
-			.material-icons {
-				font-size: 24px;
-			}
-		</style>
-	</head>
+        <style>
+            body {
+                font-family: 'Times New Roman', Times, serif;
+            }
+            h1 {
+                position: relative;
+                padding-top: 1.5cm;
+                text-align: center;
+                font-size: 70px;
+                -webkit-text-fill-color: white; 
+                -webkit-text-stroke-width: 2px; 
+                -webkit-text-stroke-color: black; 
+            }
+            img {
+                position: absolute;
+                width: 10%;
+                padding-left: 1cm;
+                padding-top: 1cm;
+            }
+            h4 {
+                position: relative;
+                font-size: 30px;
+                padding-top: 1cm;
+                padding-left: 3cm;
+                padding-right: 3cm;
+            }
+            button{
+                position: relative;
+                text-align: center;
+                margin-top: 1cm;
+                padding-top: 1cm;
+                padding-bottom: 1cm;
+                width: 80%;
+                height: 30%;
+                border-radius: 20px;
+                font-size: 50px;
+                color: white;
+                background-color: grey;
+            }
+        </style>
+    </head>
 	<body>
-		<div id="flip"><i class="material-icons">menu</i>&nbsp;&nbsp;Menu</div>
-		<div class="sidebar" id="panel">
-			<a href="#"><i class="material-icons">home</i>&nbsp;Home</a>
-			<a href="#"><i class="material-icons">person</i>&nbsp;Profile</a>
-			<a href="#"><i class="material-icons">settings</i>&nbsp;Settings</a>
-			<a href="#"><i class="material-icons">exit_to_app</i>&nbsp;Logout</a>
-		</div>
-		
-	
-		<div class="main">
-			<form action="https://www.google.com/search" method="get" target="_blank">
-				<input type="text" name="q" placeholder="Pesquisar no Google">
-				<button type="submit"><i class="material-icons">search</i></button>
-			</form>
-			<h1>Bem-vindo!</h1>
-			<p>Um teste do que pode ser feito no site, abaixo texto aleatorio para ocupar espaco</p>
-		</div>
-	
-		<script>
-			$(document).ready(function(){
-				$("#flip").click(function(){
-					$("#panel").slideToggle("slow");
-				});
-			});
-		</script>
+        <img src="img/logo.png" alt="logo">
+        <h1>CRNY (Car Next To You)</h1>
+        <h4>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            A Car Next To You é um aplicativo de aluguel de carros,
+            onde através do aplicativo você poderá escolher qualquer 
+            carro próximo a você. Aqui,  todos são fornecidos pela 
+            CNTY em parceria com as concessionárias e você poderá ver 
+            uma lista de carros próximos a você indicando preço, distância
+            de você, modelo, cor, quilometragem, quantidade de combustível
+            e avaliação de outros usuários do carro.</h4>
+        <div style="text-align: center;">
+            <a href='#' type='submit'><button>INICIAR</button></a>
+        </div>
   	</body>  
 </html>
