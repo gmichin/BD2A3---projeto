@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>site teste</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<style>
+			#panel{
+				display: none;
+			}
+			#panel a:hover {
+				background-color: grey;
+			}
+
+			#flip a:hover {
+				background-color: black;
+			}
+			#flip {
+				position: fixed;
+				top: 0.1cm;
+				left: 0;
+				width: 17.3%;
+				background-color: rgb(208, 208, 208);
+				padding: 20.5px;
+				overflow-x: hidden;
+				padding-top: 20px;
+				color: black;
+				font-size: 26px;
+                margin-left: 0.1cm;
+			}
+			#flip:hover {
+				background-color: grey;
+			}
+			.sidebar {
+				position: fixed;
+				top: 2cm;
+				left: 0;
+				bottom: 0.1cm;
+				padding-left: 0.5cm;
+				width: 18.75%;
+				background-color: rgb(208, 208, 208);
+				overflow-x: hidden;
+				padding-top: 20px;
+				padding-bottom: 29%;
+                margin-bottom: 0.1cm;
+                margin-left: 0.1cm;
+			}
+
+			.sidebar a {
+				display: block;
+				color: black;
+				padding: 16px;
+				text-decoration: none;
+				font-size: 20px;
+				transition: 0.3s;
+			}
+
+			.sidebar a:hover {
+				background-color: grey;
+				color: rgb(208, 208, 208);
+			}
+
+			.sidebar .active {
+				background-color: grey;
+				color: black;
+			}
+
+			.main {
+				float:right;
+				width: 75%;
+			}
+
+			body {
+				margin: 0;
+				padding: 0;
+				background-color: white;
+				color: black;
+				font-family: sans-serif;
+                text-align: center;
+			}
+
+			h1 {
+				font-weight: bold;
+				font-size: 40px;
+				margin-top: 50px;
+				margin-bottom: 20px;
+				text-align: center;
+			}
+
+			p {
+				font-size: 20px;
+				line-height: 1.5;
+				margin-bottom: 20px;
+			}
+
+			@media screen and (max-height: 450px) {
+				.sidebar {padding-top: 15px;}
+				.sidebar a {font-size: 18px;}
+			}
+
+			button {
+				background-color: grey;
+				color: black;
+				border: none;
+				cursor: pointer;
+                padding: 0.3cm;
+                font-size: 20px;
+			}
+
+			input[type="text"] {
+				padding: 8px;
+				border: none;
+				border-radius: 8px;
+				width: 200px;
+				background-color: rgb(208, 208, 208);
+				color: #1c1c1c;
+				margin-right: 10px;
+			}
+
+			input[type="text"]:focus {
+				outline: none;
+				box-shadow: 0 0 2px grey;
+			}
+
+			form {
+				display: flex;
+				align-items: center;
+				float: right;
+			}
+
+			.material-icons {
+				font-size: 24px;
+			}
+            #timer {
+                font-size: 48px;
+                margin: 20px;
+            }
+            
+            #startStopButton {
+                font-size: 18px;
+                padding: 10px 20px;
+            }
+
+            #proximaPag {
+                margin-top: 2cm;
+                font-size: 18px;
+                padding: 10px 20px;
+            }
+		</style>
+	</head>
+	<body>
+		<div id="flip"><i class="material-icons">menu</i>&nbsp;&nbsp;Menu</div>
+		<div class="sidebar" id="panel">
+			<a href="pagInicial.html"><i class="material-icons">home</i>&nbsp;Página Incial</a>
+			<a href="#"><i class="material-icons">person</i>&nbsp;Perfil</a>
+			<a href="#"><i class="material-icons">exit_to_app</i>&nbsp;Sair</a>
+		</div>
+        
+        <h1>Cronômetro</h1>
+        <div id="timer">00:00:00</div>
+        <button id="startStopButton">Iniciar</button>
+        <div>
+            <button id="proximaPag" href="pagPagamento.html">PAGAR</button>
+        </div>
+		<script>
+			$(document).ready(function(){
+				$("#flip").click(function(){
+					$("#panel").slideToggle("slow");
+				});
+			});
+            var timerElement = document.getElementById("timer");
+            var startStopButton = document.getElementById("startStopButton");
+        
+            var startTime;
+            var elapsedTime = 0;
+            var timerInterval;
+            var isRunning = false;
+        
+            function formatTime(time) {
+            var hours = Math.floor(time / 3600000);
+            var minutes = Math.floor((time % 3600000) / 60000);
+            var seconds = Math.floor((time % 60000) / 1000);
+        
+            var formattedTime = "";
+            if (hours < 10) {
+                formattedTime += "0";
+            }
+            formattedTime += hours + ":";
+        
+            if (minutes < 10) {
+                formattedTime += "0";
+            }
+            formattedTime += minutes + ":";
+        
+            if (seconds < 10) {
+                formattedTime += "0";
+            }
+            formattedTime += seconds;
+        
+            return formattedTime;
+            }
+        
+            function startTimer() {
+            startTime = Date.now() - elapsedTime;
+            timerInterval = setInterval(function() {
+                elapsedTime = Date.now() - startTime;
+                timerElement.textContent = formatTime(elapsedTime);
+            }, 1000);
+            }
+        
+            function stopTimer() {
+            clearInterval(timerInterval);
+            }
+        
+            function toggleTimer() {
+            if (isRunning) {
+                stopTimer();
+                isRunning = false;
+                startStopButton.textContent = "Iniciar";
+            } else {
+                startTimer();
+                isRunning = true;
+                startStopButton.textContent = "Parar";
+            }
+            }
+        
+            startStopButton.addEventListener("click", toggleTimer);
+		</script>
+  	</body>  
+</html>
