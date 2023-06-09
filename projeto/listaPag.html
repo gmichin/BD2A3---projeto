@@ -207,71 +207,42 @@
 				});
 			});
 
-            var carData = [
-                {
-                    model: "HB20 (2019)",
-                    color: "Preto",
-                    mileage: "50.000 km",
-                    price: 100,
-                    address: "Av. Paulista, 900",
-                    fuel: "80%",
-                    rating: "4.5",
-                    image: "img/hb20.jpg"
-                },
-                {
-                    model: "Civic (2020)",
-                    color: "Branco",
-                    mileage: "30.000 km",
-                    price: 150,
-                    address: "Rua vergueiro, 1000",
-                    fuel: "100%",
-                    rating: "4.2",
-                    image: "img/civic.jpg"
-                },
-                {
-                    model: "Fusca (1959)",
-                    color: "Prata",
-                    mileage: "40.000 km",
-                    price: 50,
-                    address: "Av. Paulista, 52",
-                    fuel: "20%",
-                    rating: "4.8",
-                    image: "img/fusca.jpg"
-                }
-            ];
+			var stringJson = '{"results": [{"model": "HB20 (2019)","color": "Preto","mileage": "50.000 km","price": 100,"address": "Av. Paulista, 900","fuel": "80%","rating": "4.5","image": "img/hb20.jpg"},{"model": "Civic (2020)","color": "Branco","mileage": "30.000 km","price": 150,"address": "Rua vergueiro, 1000","fuel": "100%","rating": "4.2","image": "img/civic.jpg"},{"model": "Fusca (1959)","color": "Prata","mileage": "40.000 km","price": 50,"address": "Av. Paulista, 52","fuel": "20%","rating": "4.8","image": "img/fusca.jpg"}]}';
+
+            var carData = JSON.parse(stringJson);
 
             var carList = document.getElementById("car-list");
 
-            carData.forEach(function(car) {
+            carData.results.forEach(function(it) {
                 var carItem = document.createElement("li");
                 carItem.className = "car-item";
 
                 var carImage = document.createElement("img");
-                carImage.src = car.image;
+                carImage.src = it.image;
 
                 var carDetails = document.createElement("div");
                 carDetails.className = "car-details";
 
                 var carModel = document.createElement("p");
                 carModel.className = "car-model";
-                carModel.textContent = car.model + " | Cor: " + car.color;
+                carModel.textContent = it.model + " | Cor: " + it.color;
 
                 var carInfo = document.createElement("p");
                 carInfo.className = "car-info";
-                carInfo.textContent = "Quilometragem: " + car.mileage + " | Endereço: " + car.address + " | Combustível: " + car.fuel;
+                carInfo.textContent = "Quilometragem: " + it.mileage + " | Endereço: " + it.address + " | Combustível: " + it.fuel;
 
                 var carRating = document.createElement("p");
-                carRating.textContent = "Avaliação: " + car.rating;
+                carRating.textContent = "Avaliação: " + it.rating;
 
                 
                 var carPrice = document.createElement("p");
                 carPrice.className = "car-price";
-                carPrice.textContent = "Preço: " + car.price + " R$/h";
+                carPrice.textContent = "Preço: " + it.price + " R$/h";
 
                 var carButton = document.createElement("button");
                     carButton.textContent = "Clique aqui para escolher esse carro";
                     carButton.addEventListener("click", function() {
-                        window.open("https://www.google.com/maps/search/" + encodeURIComponent(car.address));
+                        window.open("https://www.google.com/maps/search/" + encodeURIComponent(it.address));
                         window.location.href = "cronometroPag.html";
                 });
 
