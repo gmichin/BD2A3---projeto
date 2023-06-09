@@ -17,7 +17,7 @@
 			}
 			#flip {
 				position: fixed;
-				top: 0.1cm;
+				top: 1.3cm;
 				left: 0;
 				width: 17.3%;
 				background-color: rgb(208, 208, 208);
@@ -26,14 +26,14 @@
 				padding-top: 20px;
 				color: black;
 				font-size: 26px;
-                margin-left: 0.1cm;
+                margin-left: 1.3cm;
 			}
 			#flip:hover {
 				background-color: grey;
 			}
 			.sidebar {
 				position: fixed;
-				top: 2cm;
+				top: 3.3cm;
 				left: 0;
 				bottom: 0.1cm;
 				padding-left: 0.5cm;
@@ -42,8 +42,8 @@
 				overflow-x: hidden;
 				padding-top: 20px;
 				padding-bottom: 29%;
-                margin-bottom: 0.1cm;
-                margin-left: 0.1cm;
+                margin-bottom: 1.3cm;
+                margin-left: 1.3cm;
 			}
 
 			.sidebar a {
@@ -188,18 +188,27 @@
                 border: 2px solid black;
                 width: 90%;
             }
+			.container {
+				position: relative;
+                background-color: #fff;
+                border-radius: 5px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+				margin: 1cm;
+				overflow: hidden;
+            }
 		</style>
 	</head>
 	<body>
-		<div id="flip"><i class="material-icons">menu</i>&nbsp;&nbsp;Menu</div>
-		<div class="sidebar" id="panel">
-			<a href="pagInicial.html"><i class="material-icons">home</i>&nbsp;Página Incial</a>
-			<a href="#"><i class="material-icons">person</i>&nbsp;Perfil</a>
-			<a href="#"><i class="material-icons">exit_to_app</i>&nbsp;Sair</a>
+		<div class="container">
+			<div id="flip"><i class="material-icons">menu</i>&nbsp;&nbsp;Menu</div>
+			<div class="sidebar" id="panel">
+				<a href="pagInicial.html"><i class="material-icons">home</i>&nbsp;Página Incial</a>
+				<a href="#"><i class="material-icons">person</i>&nbsp;Perfil</a>
+				<a href="#"><i class="material-icons">exit_to_app</i>&nbsp;Sair</a>
+			</div>
+		
+			<ul id="car-list"></ul>
 		</div>
-	
-        <ul id="car-list"></ul>
-
 		<script>
 			$(document).ready(function(){
 				$("#flip").click(function(){
@@ -207,11 +216,12 @@
 				});
 			});
 
-			var stringJson = '{"results": [{"model": "HB20 (2019)","color": "Preto","mileage": "50.000 km","price": 100,"address": "Av. Paulista, 900","fuel": "80%","rating": "4.5","image": "img/hb20.jpg"},{"model": "Civic (2020)","color": "Branco","mileage": "30.000 km","price": 150,"address": "Rua vergueiro, 1000","fuel": "100%","rating": "4.2","image": "img/civic.jpg"},{"model": "Fusca (1959)","color": "Prata","mileage": "40.000 km","price": 50,"address": "Av. Paulista, 52","fuel": "20%","rating": "4.8","image": "img/fusca.jpg"}]}';
+			var stringJson = '{"results": [{"model": "HB20 (2019)","color": "Preto","mileage": "50.000 km","price": 100,"address": "Av. Paulista, 900","fuel": "80%","rating": "4.5","image": "img/hb20.jpg"},{"model": "Civic (2020)","color": "Branco","mileage": "30.000 km","price": 150,"address": "Rua vergueiro, 1000","fuel": "100%","rating": "4.2","image": "img/civic.jpg"},{"model": "Fusca (1959)","color": "Prata","mileage": "40.000 km","price": 50,"address": "Av. Paulista, 52","fuel": "20%","rating": "4.8","image": "img/fusca.jpg"},{"model": "HB20 (2019)","color": "Preto","mileage": "50.000 km","price": 100,"address": "Av. Paulista, 900","fuel": "80%","rating": "4.5","image": "img/hb20.jpg"},{"model": "Civic (2020)","color": "Branco","mileage": "30.000 km","price": 150,"address": "Rua vergueiro, 1000","fuel": "100%","rating": "4.2","image": "img/civic.jpg"},{"model": "Fusca (1959)","color": "Prata","mileage": "40.000 km","price": 50,"address": "Av. Paulista, 52","fuel": "20%","rating": "4.8","image": "img/fusca.jpg"},{"model": "HB20 (2019)","color": "Preto","mileage": "50.000 km","price": 100,"address": "Av. Paulista, 900","fuel": "80%","rating": "4.5","image": "img/hb20.jpg"},{"model": "Civic (2020)","color": "Branco","mileage": "30.000 km","price": 150,"address": "Rua vergueiro, 1000","fuel": "100%","rating": "4.2","image": "img/civic.jpg"},{"model": "Fusca (1959)","color": "Prata","mileage": "40.000 km","price": 50,"address": "Av. Paulista, 52","fuel": "20%","rating": "4.8","image": "img/fusca.jpg"},{"model": "HB20 (2019)","color": "Preto","mileage": "50.000 km","price": 100,"address": "Av. Paulista, 900","fuel": "80%","rating": "4.5","image": "img/hb20.jpg"},{"model": "Civic (2020)","color": "Branco","mileage": "30.000 km","price": 150,"address": "Rua vergueiro, 1000","fuel": "100%","rating": "4.2","image": "img/civic.jpg"},{"model": "Fusca (1959)","color": "Prata","mileage": "40.000 km","price": 50,"address": "Av. Paulista, 52","fuel": "20%","rating": "4.8","image": "img/fusca.jpg"},{"model": "HB20 (2019)","color": "Preto","mileage": "50.000 km","price": 100,"address": "Av. Paulista, 900","fuel": "80%","rating": "4.5","image": "img/hb20.jpg"},{"model": "Civic (2020)","color": "Branco","mileage": "30.000 km","price": 150,"address": "Rua vergueiro, 1000","fuel": "100%","rating": "4.2","image": "img/civic.jpg"},{"model": "Fusca (1959)","color": "Prata","mileage": "40.000 km","price": 50,"address": "Av. Paulista, 52","fuel": "20%","rating": "4.8","image": "img/fusca.jpg"}]}';
 
             var carData = JSON.parse(stringJson);
 
             var carList = document.getElementById("car-list");
+			var container = document.querySelector(".container");
 
             carData.results.forEach(function(it) {
                 var carItem = document.createElement("li");
@@ -243,6 +253,7 @@
                     carButton.textContent = "Clique aqui para escolher esse carro";
                     carButton.addEventListener("click", function() {
                         window.open("https://www.google.com/maps/search/" + encodeURIComponent(it.address));
+						localStorage.setItem('selectedCar', JSON.stringify(it));
                         window.location.href = "cronometroPag.html";
                 });
 
@@ -256,7 +267,9 @@
                 carItem.appendChild(carDetails);
 
                 carList.appendChild(carItem);
-            });
+            });			
+			var carListHeight = carList.offsetHeight;
+			container.style.paddingBottom = carListHeight*1.02 + "px";
 		</script>
   	</body>  
 </html>
