@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Redirecionamento Automático</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+    }
+    
+    h1 {
+      font-size: 24px;
+      text-align: center;
+    }
+            
+    .container {
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        width: 20cm;
+        height: 15cm;
+        text-align: center;
+        display: flex;
+        align-items: center;
+    }
+  </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Obrigado!</h1>
+    </div>
+
+  <script>
+    function redirecionar() {
+      window.location.href = 'pagInicial.html';
+    }
+    setTimeout(redirecionar, 3000);
+  </script>
+</body>
+</html>
