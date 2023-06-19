@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dados do Usuário</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <style>
+                .container {
+                    position: relative;
+                    background-color: #fff;
+                    border-radius: 5px;
+                    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+                    margin: 1cm;
+                    overflow: hidden;
+                    height: 17.7cm;
+                }
+                #panel{
+                    display: none;
+                }
+                #panel a:hover {
+                    background-color: grey;
+                }
+
+                #flip a:hover {
+                    background-color: black;
+                }
+                #flip {
+                    position: fixed;
+                    top: 1.3cm;
+                    left: 0;
+                    width: 17.3%;
+                    background-color: rgb(208, 208, 208);
+                    padding: 20.5px;
+                    overflow-x: hidden;
+                    padding-top: 20px;
+                    color: black;
+                    font-size: 26px;
+                    margin-left: 1.3cm;
+                }
+                #flip:hover {
+                    background-color: grey;
+                }
+                .sidebar {
+                    position: fixed;
+                    top: 3.3cm;
+                    left: 0;
+                    bottom: 0.1cm;
+                    padding-left: 0.5cm;
+                    width: 18.75%;
+                    background-color: rgb(208, 208, 208);
+                    overflow-x: hidden;
+                    padding-top: 20px;
+                    padding-bottom: 29%;
+                    margin-bottom: 1.3cm;
+                    margin-left: 1.3cm;
+                }
+
+                .sidebar a {
+                    display: block;
+                    color: black;
+                    padding: 16px;
+                    text-decoration: none;
+                    font-size: 20px;
+                    transition: 0.3s;
+                }
+
+                .sidebar a:hover {
+                    background-color: grey;
+                    color: rgb(208, 208, 208);
+                }
+
+                .sidebar .active {
+                    background-color: grey;
+                    color: black;
+                }
+                 @media screen and (max-height: 450px) {
+                    .sidebar {padding-top: 15px;}
+                    .sidebar a {font-size: 18px;}
+                }
+                body {
+                    margin: 0;
+                    padding: 0;
+                    background-color: white;
+                    color: black;
+                    font-family: sans-serif;
+                }
+                button {
+                    font-size: 20px;
+                    background-color: rgb(208, 208, 208);
+                    padding: 10px;
+                    margin-top: 4cm;
+                    margin-left: 17.9cm;
+                }
+                button:hover{
+                    cursor: pointer;
+                }
+                h1{
+                    text-align: center;
+                }
+                .box{
+                    margin-top: 1cm;
+                    overflow: hidden;
+                    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+                    padding-left: 0.5cm;
+                    width: 20cm;
+                }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div id="flip"><i class="material-icons">menu</i>&nbsp;&nbsp;Menu</div>
+            <div class="sidebar" id="panel">
+                <a href="pagInicial.html"><i class="material-icons">home</i>&nbsp;Página Incial</a>
+                <a href="pagPerfil.html"><i class="material-icons">person</i>&nbsp;Perfil</a>
+                <a href="#"><i class="material-icons">exit_to_app</i>&nbsp;Sair</a>
+            </div>
+            <h1>Dados do Usuário</h1>
+            <div style="margin-left: 9cm;">
+                <div class="box">
+                    <h2>Usuário</h2>
+                    <p id="usuario"></p>
+                </div>
+                <div class="box">
+                    <h2>Endereço</h2>
+                    <p id="endereco"></p>
+                </div>
+                <div class="box">
+                    <h2>CPF</h2>
+                    <p id="cpf"></p>
+                </div>
+                <div class="box">
+                    <h2>Cartão Padrão</h2>
+                    <p id="cartao"></p>
+                </div>
+            </div>
+        </div>
+        <script>
+             $(document).ready(function(){
+				$("#flip").click(function(){
+					$("#panel").slideToggle("slow");
+				});
+			});
+            var usuarioJSON = {
+                "usuario": "Gustavo Massamichi Nakamura",
+                "endereco": "Rua inventada, 000",
+                "cpf": "123.345.567-89",
+                "cartao": "2344 2342 43243 2334"
+            };
+            document.getElementById("usuario").innerHTML = usuarioJSON.usuario;
+            document.getElementById("endereco").innerHTML = usuarioJSON.endereco;
+            document.getElementById("cpf").innerHTML = usuarioJSON.cpf;
+            document.getElementById("cartao").innerHTML = usuarioJSON.cartao;
+        </script>
+    </body>
+</html>
