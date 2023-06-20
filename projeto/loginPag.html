@@ -84,28 +84,32 @@
             <p id="message"></p>
         </div>
         <script>
-            var stringJson = '{"users": [{"usuario": "Gustavo Massamichi Nakamura","endereco": "Rua inventada, 000","cpf": "123.345.567-89","cartao": "2344 2342 43243 2334","senha": "gu1234"},{"usuario": "Francisco","endereco": "Rua pensada, 00","cpf": "987.765.543-21","cartao": "1234 4567 7891 1011","senha": "senhaFrancisco"}],"cars":[{"model": "HB20 (2019)","color": "Preto","mileage": "50.000 km","price": 100,"address": "Av. Paulista, 900","fuel": "80%","rating": "4.5","image": "img/hb20.jpg"},{"model": "Civic (2020)","color": "Branco","mileage": "30.000 km","price": 150,"address": "Rua vergueiro, 1000","fuel": "100%","rating": "4.2","image": "img/civic.jpg"},{"model": "Fusca (1959)","color": "Prata","mileage": "40.000 km","price": 50,"address": "Av. Paulista, 52","fuel": "20%","rating": "4.8","image": "img/fusca.jpg"},{"model": "HB20 (2019)","color": "Preto","mileage": "50.000 km","price": 100,"address": "Av. Paulista, 900","fuel": "80%","rating": "4.5","image": "img/hb20.jpg"},{"model": "Civic (2020)","color": "Branco","mileage": "30.000 km","price": 150,"address": "Rua vergueiro, 1000","fuel": "100%","rating": "4.2","image": "img/civic.jpg"},{"model": "Fusca (1959)","color": "Prata","mileage": "40.000 km","price": 50,"address": "Av. Paulista, 52","fuel": "20%","rating": "4.8","image": "img/fusca.jpg"}]}';
-            localStorage.setItem("carData", stringJson);
-
-            var usuarioJSON = JSON.parse(stringJson);
-
             document.getElementById("login-form").addEventListener("submit", function(event) {
-                event.preventDefault();
+            event.preventDefault();
 
-                var username = document.getElementById("username").value;
-                var password = document.getElementById("password").value;
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
 
-                var foundUser = usuarioJSON.users.find(function(user) {
-                return user.usuario === username && user.senha === password;
+            fetch('http://localhost:3000/data')
+                .then(response => response.json())
+                .then(data => {
+                localStorage.setItem("carData", JSON.stringify(data));
+                var foundUser = data.users.find(function(user) {
+                    return user.usuario === username && user.senha === password;
+                });
+
+                if (foundUser) {
+                    localStorage.setItem("currentUser", JSON.stringify(foundUser));
+                    window.location.href = "listaPag.html";
+                } else {
+                    document.getElementById("message").textContent = "Usuário ou senha inválidos";
+                }
+                })
+                .catch(error => {
+                console.error('Erro ao obter JSON:', error);
+                document.getElementById("message").textContent = "Erro ao obter JSON";
+                });
             });
-
-            if (foundUser) {
-                localStorage.setItem("currentUser", JSON.stringify(foundUser));
-                window.location.href = "listaPag.html";
-            } else {
-                document.getElementById("message").textContent = "Usuário ou senha inválidos";
-            }
-        });
         </script>
-  	</body>  
+    </body>    
 </html>
