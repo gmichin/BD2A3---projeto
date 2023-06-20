@@ -140,16 +140,16 @@
 					$("#panel").slideToggle("slow");
 				});
 			});
-            var usuarioJSON = {
-                "usuario": "Gustavo Massamichi Nakamura",
-                "endereco": "Rua inventada, 000",
-                "cpf": "123.345.567-89",
-                "cartao": "2344 2342 43243 2334"
-            };
-            document.getElementById("usuario").innerHTML = usuarioJSON.usuario;
-            document.getElementById("endereco").innerHTML = usuarioJSON.endereco;
-            document.getElementById("cpf").innerHTML = usuarioJSON.cpf;
-            document.getElementById("cartao").innerHTML = usuarioJSON.cartao;
+            var currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+            if (currentUser) {
+                document.getElementById("usuario").innerHTML = currentUser.usuario;
+                document.getElementById("endereco").innerHTML = currentUser.endereco;
+                document.getElementById("cpf").innerHTML = currentUser.cpf;
+                document.getElementById("cartao").innerHTML = currentUser.cartao;
+            } else {
+                window.location.href = "login.html";
+            }
         </script>
     </body>
 </html>

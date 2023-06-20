@@ -202,11 +202,11 @@
 		<div class="container">
 			<div id="flip"><i class="material-icons">menu</i>&nbsp;&nbsp;Menu</div>
 			<div class="sidebar" id="panel">
-				<a href="pagInicial.html"><i class="material-icons">home</i>&nbsp;Página Incial</a>
+				<a href="pagInicial.html"><i class="material-icons">home</i>&nbsp;Página Inicial</a>
 				<a href="pagPerfil.html"><i class="material-icons">person</i>&nbsp;Perfil</a>
-				<a href="#" ><i class="material-icons">exit_to_app</i>&nbsp;Sair</a>
+				<a href="#"><i class="material-icons">exit_to_app</i>&nbsp;Sair</a>
 			</div>
-		
+	
 			<ul id="car-list"></ul>
 		</div>
 		<script>
@@ -215,61 +215,59 @@
 					$("#panel").slideToggle("slow");
 				});
 			});
-
-			var stringJson = '{"results": [{"model": "HB20 (2019)","color": "Preto","mileage": "50.000 km","price": 100,"address": "Av. Paulista, 900","fuel": "80%","rating": "4.5","image": "img/hb20.jpg"},{"model": "Civic (2020)","color": "Branco","mileage": "30.000 km","price": 150,"address": "Rua vergueiro, 1000","fuel": "100%","rating": "4.2","image": "img/civic.jpg"},{"model": "Fusca (1959)","color": "Prata","mileage": "40.000 km","price": 50,"address": "Av. Paulista, 52","fuel": "20%","rating": "4.8","image": "img/fusca.jpg"},{"model": "HB20 (2019)","color": "Preto","mileage": "50.000 km","price": 100,"address": "Av. Paulista, 900","fuel": "80%","rating": "4.5","image": "img/hb20.jpg"},{"model": "Civic (2020)","color": "Branco","mileage": "30.000 km","price": 150,"address": "Rua vergueiro, 1000","fuel": "100%","rating": "4.2","image": "img/civic.jpg"},{"model": "Fusca (1959)","color": "Prata","mileage": "40.000 km","price": 50,"address": "Av. Paulista, 52","fuel": "20%","rating": "4.8","image": "img/fusca.jpg"},{"model": "HB20 (2019)","color": "Preto","mileage": "50.000 km","price": 100,"address": "Av. Paulista, 900","fuel": "80%","rating": "4.5","image": "img/hb20.jpg"},{"model": "Civic (2020)","color": "Branco","mileage": "30.000 km","price": 150,"address": "Rua vergueiro, 1000","fuel": "100%","rating": "4.2","image": "img/civic.jpg"},{"model": "Fusca (1959)","color": "Prata","mileage": "40.000 km","price": 50,"address": "Av. Paulista, 52","fuel": "20%","rating": "4.8","image": "img/fusca.jpg"},{"model": "HB20 (2019)","color": "Preto","mileage": "50.000 km","price": 100,"address": "Av. Paulista, 900","fuel": "80%","rating": "4.5","image": "img/hb20.jpg"},{"model": "Civic (2020)","color": "Branco","mileage": "30.000 km","price": 150,"address": "Rua vergueiro, 1000","fuel": "100%","rating": "4.2","image": "img/civic.jpg"},{"model": "Fusca (1959)","color": "Prata","mileage": "40.000 km","price": 50,"address": "Av. Paulista, 52","fuel": "20%","rating": "4.8","image": "img/fusca.jpg"},{"model": "HB20 (2019)","color": "Preto","mileage": "50.000 km","price": 100,"address": "Av. Paulista, 900","fuel": "80%","rating": "4.5","image": "img/hb20.jpg"},{"model": "Civic (2020)","color": "Branco","mileage": "30.000 km","price": 150,"address": "Rua vergueiro, 1000","fuel": "100%","rating": "4.2","image": "img/civic.jpg"},{"model": "Fusca (1959)","color": "Prata","mileage": "40.000 km","price": 50,"address": "Av. Paulista, 52","fuel": "20%","rating": "4.8","image": "img/fusca.jpg"}]}';
-
-            var carData = JSON.parse(stringJson);
-
-            var carList = document.getElementById("car-list");
+	
+			var carData = JSON.parse(localStorage.getItem("carData"));
+	
+			var carList = document.getElementById("car-list");
 			var container = document.querySelector(".container");
-
-            carData.results.forEach(function(it) {
-                var carItem = document.createElement("li");
-                carItem.className = "car-item";
-
-                var carImage = document.createElement("img");
-                carImage.src = it.image;
-
-                var carDetails = document.createElement("div");
-                carDetails.className = "car-details";
-
-                var carModel = document.createElement("p");
-                carModel.className = "car-model";
-                carModel.textContent = it.model + " | Cor: " + it.color;
-
-                var carInfo = document.createElement("p");
-                carInfo.className = "car-info";
-                carInfo.textContent = "Quilometragem: " + it.mileage + " | Endereço: " + it.address + " | Combustível: " + it.fuel;
-
-                var carRating = document.createElement("p");
-                carRating.textContent = "Avaliação: " + it.rating;
-
-                
-                var carPrice = document.createElement("p");
-                carPrice.className = "car-price";
-                carPrice.textContent = "Preço: " + it.price + " R$/h";
-
-                var carButton = document.createElement("button");
-                    carButton.textContent = "Clique aqui para escolher esse carro";
-                    carButton.addEventListener("click", function() {
-                        window.open("https://www.google.com/maps/search/" + encodeURIComponent(it.address));
-						localStorage.setItem('selectedCar', JSON.stringify(it));
-                        window.location.href = "cronometroPag.html";
-                });
-
-                carDetails.appendChild(carModel);
-                carDetails.appendChild(carInfo);
-                carDetails.appendChild(carRating);
-                carDetails.appendChild(carPrice);
-                carDetails.appendChild(carButton);
-
-                carItem.appendChild(carImage);
-                carItem.appendChild(carDetails);
-
-                carList.appendChild(carItem);
-            });			
+	
+			carData.cars.forEach(function(it) {
+				var carItem = document.createElement("li");
+				carItem.className = "car-item";
+	
+				var carImage = document.createElement("img");
+				carImage.src = it.image;
+	
+				var carDetails = document.createElement("div");
+				carDetails.className = "car-details";
+	
+				var carModel = document.createElement("p");
+				carModel.className = "car-model";
+				carModel.textContent = it.model + " | Cor: " + it.color;
+	
+				var carInfo = document.createElement("p");
+				carInfo.className = "car-info";
+				carInfo.textContent = "Quilometragem: " + it.mileage + " | Endereço: " + it.address + " | Combustível: " + it.fuel;
+	
+				var carRating = document.createElement("p");
+				carRating.textContent = "Avaliação: " + it.rating;
+	
+				var carPrice = document.createElement("p");
+				carPrice.className = "car-price";
+				carPrice.textContent = "Preço: " + it.price + " R$/h";
+	
+				var carButton = document.createElement("button");
+				carButton.textContent = "Clique aqui para escolher esse carro";
+				carButton.addEventListener("click", function() {
+					window.open("https://www.google.com/maps/search/" + encodeURIComponent(it.address));
+					localStorage.setItem('selectedCar', JSON.stringify(it));
+					window.location.href = "cronometroPag.html";
+				});
+	
+				carDetails.appendChild(carModel);
+				carDetails.appendChild(carInfo);
+				carDetails.appendChild(carRating);
+				carDetails.appendChild(carPrice);
+				carDetails.appendChild(carButton);
+	
+				carItem.appendChild(carImage);
+				carItem.appendChild(carDetails);
+	
+				carList.appendChild(carItem);
+			});
+	
 			var carListHeight = carList.offsetHeight;
-			container.style.paddingBottom = carListHeight*1.02 + "px";
+			container.style.paddingBottom = carListHeight * 1.02 + "px";
 		</script>
-  	</body>  
+	</body>
 </html>
